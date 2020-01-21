@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trpg.myprj.dao.UserDao">
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="userId" keyColumn="user_id"
+            parameterType="com.trpg.myprj.entity.User">
+        insert into user(password, user_name, email)
+        values (#{password},#{userName},#{email})
+    </insert>
+
+    <select id="queryUserByAccount" resultType="com.trpg.myprj.entity.User">
+        select *
+        from user
+        where account=#{account}
+    </select>
+</mapper>

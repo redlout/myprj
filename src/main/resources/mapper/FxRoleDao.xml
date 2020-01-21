@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trpg.myprj.dao.FxRoleDao">
+    <select id="queryFxRole" resultType="com.trpg.myprj.entity.FxRole">
+        select *
+        from fx_role
+        order by role_id
+        desc
+    </select>
+    
+    <select id="queryFxRoleByName" resultType="com.trpg.myprj.entity.FxRole">
+        select *
+        from fx_role
+        where role_name= #{roleName}
+    </select>
+    
+    <insert id="insertFxRoleBase" useGeneratedKeys="true" keyProperty="roleId" keyColumn="role_id"
+            parameterType="com.trpg.myprj.entity.FxRole">
+        insert into fx_role_base(
+                user_id,name,sex,height,weight,age,race,character,looks,virtue_id,
+                virtue_name,gene,delicate,xp,describe,
+                ra_power_base,ra_power_inner,ra_power_additional,
+                ra_agile_base,ra_agile_inner,ra_agile_additional,
+                ra_endurance_base,ra_endurance_inner,ra_endurance_additional,
+                ra_intelligence_base,ra_intelligence_inner,ra_intelligence_additional,
+                ra_perception_base,ra_perception_inner,ra_perception_additional,
+                ra_determined_base,ra_determined_inner,ra_determined_additional,
+                ra_grace_base,ra_grace_inner,ra_grace_additional,
+                ra_control_base,ra_control_inner,ra_control_additional,
+                ra_calm_base,ra_calm_inner,ra_calm_additional
+                )
+        values (#{userId},#{name},#{sex},#{height},#{weight},#{age},#{race},#{character},#{looks},#{virtueId},
+                #{virtueName},#{gene},#{delicate},#{xp},#{describe},
+                #{raPowerBase},#{raPowerInner},#{raPowerAdditional},
+                #{raAgileBase},#{raAgileInner},#{raAgileAdditional},
+                #{raEnduranceBase},#{raEnduranceInner},#{raEnduranceAdditional},
+                #{raIntelligenceBase},#{raIntelligenceInner},#{raIntelligenceAdditional},
+                #{raPerceptionBase},#{raPerceptionInner},#{raPerceptionAdditional},
+                #{raDeterminedBase},#{raDeterminedInner},#{raDeterminedAdditional},
+                #{raGraceBase},#{raGraceInner},#{raGraceAdditional},
+                #{raControlBase},#{raControlInner},#{raControlAdditional},
+                #{raCalmBase},#{raCalmInner},#{raCalmAdditional}
+                       )
+    </insert>
+    
+    <insert id="insertFxRoleDetail" useGeneratedKeys="true" keyProperty="roleId" keyColumn="role_id"
+            parameterType="com.trpg.myprj.entity.FxRole">
+        insert into fx_role_detail(
+                user_id,
+                exercise_base, exercise_additional, exercise_professional,
+                shooting_base, shooting_additional, shooting_professional,
+                wushu_base, wushu_additional, wushu_professional,
+                survival_base, survival_additional, survival_professional,
+                knowledge_base, knowledge_additional, knowledge_professional,
+                equipment_use_base, equipment_use_additional, equipment_use_professional,
+                craft_base, craft_additional, craft_professional,
+                focus_base, focus_additional, focus_professional,
+                insight_base, insight_additional, insight_professional,
+                secret_base, secret_additional, secret_professional,
+                express_base, express_additional, express_professional,
+                social_base, social_additional, social_professional
+                )
+        values (#{userId},
+                #{exerciseBase}, #{exerciseAdditional}, #{exerciseProfessional},
+                #{shootingBase}, #{shootingAdditional}, #{shootingProfessional},
+                #{wushuBase}, #{wushuAdditional}, #{wushuProfessional},
+                #{survivalBase}, #{survivalAdditional}, #{survivalProfessional},
+                #{knowledgeBase}, #{knowledgeAdditional}, #{knowledgeProfessional},
+                #{equipmentUseBase}, #{equipmentUseAdditional}, #{equipmentUseProfessional},
+                #{craftBase}, #{craftAdditional}, #{craftProfessional},
+                #{focusBase}, #{focusAdditional}, #{focusProfessional},
+                #{insightBase}, #{insightAdditional}, #{insightProfessional},
+                #{secretBase}, #{secretAdditional}, #{secretProfessional},
+                #{expressBase}, #{expressAdditional}, #{expressProfessional},
+                #{socialBase}, #{socialAdditional}, #{socialProfessional}
+                       )
+    </insert>
+</mapper>
